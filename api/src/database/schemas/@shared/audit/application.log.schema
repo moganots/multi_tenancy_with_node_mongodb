@@ -1,0 +1,24 @@
+/*
+|--------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Author        : Thabang Mogano
+| Description   : Api Audit schema class
+| Dependencies  :
+| > mongoose    >= 6.9.2 or latest
+| > mongoose.Schema
+| > mongoose.SchemaTypes
+|--------------------------------------------------------------------------------------------------------------------------------------------------------------
+*/
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
+const { ObjectId } = mongoose.SchemaTypes;
+module.exports = new Schema({
+  caller: { type: String, required: true },
+  logType: { type: String, required: true },
+  methodName: { type: String, required: true },
+  message: { type: String, required: true },
+  detailMessage: { type: String, required: false },
+  createdBy: { type: ObjectId, required: false },
+  dateCreated: { type: Date, default: Date.now, required: true },
+  modifiedBy: { type: ObjectId, required: false },
+  dateModified: { type: Date, default: Date.now, required: false },
+});
